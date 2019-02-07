@@ -1,3 +1,22 @@
-.App {
-  text-align: center;
+.app {
+  font-family: -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Oxygen-Sans,Ubuntu,Cantarell,"Helvetica Neue",sans-serif;
+  padding: 1em;
+}
+.app header {
+  color: #333;
+  font-size: 1.2em;
+  font-weight: 600;
+  margin-bottom: 0.5em;
+}
+
+.app-body {
+  display: flex;
+  flex-direction: column;
+}
+
+@media only screen and (min-width: 31rem) {
+  .app-body {
+    align-items: center;
+    flex-direction: row;
+  }
 }

@@ -1,17 +1,19 @@
 import React, { PureComponent } from 'react'
 import PropTypes from 'prop-types'
+import Drone from './drone.svg'
+
+import './Robot.css'
 
 class Robot extends PureComponent {
   render () {
-    return <div>Robot</div>
+    return <img className='robot' src={Drone} alt='drone' />
   }
 }
 
 Robot.propTypes = {
-  children: PropTypes.oneOfType([
-    PropTypes.element,
-    PropTypes.array
-  ])
+  direction: PropTypes.string,
+  posX: PropTypes.number,
+  posY: PropTypes.number,
 }
 
 export default Robot

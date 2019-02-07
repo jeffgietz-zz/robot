@@ -1,0 +1,25 @@
+.grid-wrap {
+  max-width: 50em;
+  position: relative;
+  flex-grow: 1;
+  box-shadow: 0px 2px 7px 0px rgba(204,204,204,1);
+}
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(1em, 1fr));
+  grid-template-rows: 1fr;
+  grid-column-gap: 0;
+}
+
+.grid-col:nth-child(odd) .grid-cell:nth-child(odd),
+.grid-col:nth-child(even) .grid-cell:nth-child(even) {
+  background-color: rgb(212, 161, 233);
+}
+
+.grid-cell::before {
+  content: "";
+  display: inline-block;
+  width: 1px;
+  height: 0;
+  padding-bottom: calc(100% / (1/1));
+}

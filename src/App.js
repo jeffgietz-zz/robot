@@ -8,13 +8,16 @@ import './App.css';
 class App extends Component {
   render() {
     return (
-      <div className="App">
-        <header className="App-header">
-          Robot Thingo
+      <div className="app">
+        <header className="app-header">
+          Toy Robot Simulator
         </header>
-        <Grid />
-        <Robot />
-        <Controls />
+        <div className='app-body'>
+          <Grid height={3} width={8}>
+            <Robot posX={0} posY={0} direction='north' />
+          </Grid>
+          <Controls />
+        </div>
       </div>
     );
   }

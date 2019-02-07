@@ -7,3 +7,5 @@ it('renders without crashing', () => {
   ReactDOM.render(<Grid />, div);
   ReactDOM.unmountComponentAtNode(div);
 });
+
+// Expect correct amount of cells for width and height
