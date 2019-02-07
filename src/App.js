@@ -13,7 +13,7 @@ class App extends Component {
           Toy Robot Simulator
         </header>
         <div className='app-body'>
-          <Grid height={3} width={8}>
+          <Grid height={5} width={5}>
             <Robot posX={0} posY={0} direction='north' />
           </Grid>
           <Controls />

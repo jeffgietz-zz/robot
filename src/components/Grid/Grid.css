@@ -16,6 +16,10 @@
   background-color: rgb(212, 161, 233);
 }
 
+.grid-cell {
+  position: relative;
+}
+
 .grid-cell::before {
   content: "";
   display: inline-block;

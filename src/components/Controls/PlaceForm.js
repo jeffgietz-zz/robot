@@ -52,6 +52,9 @@ class PlaceForm extends PureComponent {
                   </div>
                 )}
               />
+              <button type="submit">
+                Submit
+              </button>
             </form>
           )}
         </Formik>
