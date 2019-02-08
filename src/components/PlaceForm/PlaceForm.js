@@ -3,26 +3,44 @@ import React, { PureComponent } from 'react'
 import { Field, Formik } from 'formik'
 
 class PlaceForm extends PureComponent {
-  handleSubmit = () => {
-    console.log('handle submit')
-  }
+  
   render () {
     return (
-      <Formik>
+      <Formik
+        initialValues={{ posX: '', posY: '' }}
+        onSubmit={(values) => {
+          this.props.handleSubmit(values)
+        }}
+        validate={values => {
+          console.log('values', values)
+          let errors = {};
+          if (values.posX !== 0 && !values.posX) {
+            errors.posX = 'Required';
+          } else if (
+            !/^[0-9]+$/.test(values.posX)
+          ) {
+            errors.posX = 'Please only use numbers';
+          }
+          if (values.posY !== 0 && !values.posY) {
+            errors.posY = 'Required';
+          } else if (
+            !/^[0-9]+$/.test(values.posY)
+          ) {
+            errors.posY = 'Please only use numbers';
+          }
+          return errors;
+        }}
+      >
           {({
             values,
             errors,
             touched,
-            handleChange,
-            handleBlur,
             handleSubmit,
-            isSubmitting,
-            /* and other goodies */
           }) => (
-            <form onSubmit={this.handleSubmit}>
+            <form onSubmit={handleSubmit}>
               <Field
                 name='posX'
-                render={({ field /* _form */ }) => (
+                render={({ field }) => (
                   <div className='field'>
                     <label htmlFor='posX'>Place Robot X:</label>    
                     <input {...field} placeholder='0' />
@@ -31,7 +49,7 @@ class PlaceForm extends PureComponent {
               />
               <Field
                 name='posY'
-                render={({ field /* _form */ }) => (
+                render={({ field }) => (
                   <div className='field'>
                     <label htmlFor='posY'>Place Robot Y:</label>    
                     <input {...field} placeholder='0' />
@@ -40,7 +58,7 @@ class PlaceForm extends PureComponent {
               />
               <Field
                 name='direction'
-                render={({ field /* _form */ }) => (
+                render={({ field }) => (
                   <div className='field'>
                     <label htmlFor='direction'>Direction:</label>    
                     <select {...field}>

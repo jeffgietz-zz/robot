@@ -1,7 +1,6 @@
 import React, { PureComponent } from 'react'
 import PropTypes from 'prop-types'
 import logo from './logo.svg';
-import PlaceForm from './PlaceForm'
 
 import './Controls.css'
 
@@ -9,7 +8,9 @@ class Controls extends PureComponent {
   render () {
     return (
       <div className='controls'>
-        <PlaceForm />
+        <div className='more-controls'>
+          {this.props.children}
+        </div>
         <div className="button-list">
           <div className="button">
             <img src={logo} alt='place' />
