@@ -1,101 +1,107 @@
-import React, { PureComponent } from 'react';
-import Grid from './components/Grid'
-import Robot from './components/Robot'
-import Controls from './components/Controls'
-import PlaceForm from './components/PlaceForm'
+import React, { PureComponent } from "react";
+import Grid from "./components/Grid";
+import Robot from "./components/Robot";
+import Controls from "./components/Controls";
+import PlaceForm from "./components/PlaceForm";
 
-import './App.css';
+import "./App.css";
 
 class App extends PureComponent {
-  constructor () {
-    super()
+  constructor() {
+    super();
     this.state = {
       gridX: 5,
       gridY: 5,
       robot: null,
       placeFormVisible: true
-    }
+    };
   }
 
   handleAdvance = () => {
-    const { gridX, gridY, robot } = this.state
-    let changeX = 0
-    let changeY = 0
-    switch (robot.rotation) {
-      case 90:
-      case -270:
-        changeX = 1
-        break;
-      case -180:
-      case 180:
-        changeY = -1
-        break;
-      case -90:
-      case 270:
-        changeX = -1
-        break;
-      case 0:
-      default:
-        changeY = 1
-        break;
+    const { gridX, gridY, robot } = this.state;
+    if (robot) {
+      let changeX = 0;
+      let changeY = 0;
+      switch (robot.rotation) {
+        case 90:
+        case -270:
+          changeX = 1;
+          break;
+        case -180:
+        case 180:
+          changeY = -1;
+          break;
+        case -90:
+        case 270:
+          changeX = -1;
+          break;
+        case 0:
+        default:
+          changeY = 1;
+          break;
+      }
+      this.setState({
+        robot: {
+          ...robot,
+          posX: this.positionCheck(robot.posX, robot.posX + changeX, gridX - 1),
+          posY: this.positionCheck(robot.posY, robot.posY + changeY, gridY - 1)
+        }
+      });
     }
-    this.setState({
-      robot: {
-        ...robot,
-        posX: this.positionCheck(robot.posX, robot.posX + changeX, gridX - 1),
-        posY: this.positionCheck(robot.posY, robot.posY + changeY, gridY - 1),
-      } 
-    })
-  }
+  };
   positionCheck = (prevPos, nextPos, maxPos) => {
     if (nextPos < 0 || nextPos > maxPos) {
-      return prevPos
+      return prevPos;
     } else {
-      return nextPos
+      return nextPos;
     }
-  }
-  handlePlace = (values) => {
+  };
+  handlePlace = values => {
     this.setState({
       robot: {
         rotation: parseInt(values.rotation),
         posX: parseInt(values.posX),
         posY: parseInt(values.posY)
-      } 
-    })
-  }
+      }
+    });
+  };
 
   handlePlaceToggle = () => {
-    this.setState({placeFormVisible: !this.state.placeFormVisible})
-  }
+    this.setState({ placeFormVisible: !this.state.placeFormVisible });
+  };
 
   handleLeftClick = () => {
-    const { rotation } = this.state.robot
-    this.setState({
-      robot: {
-        ...this.state.robot,
-        rotation: (rotation - 90 === -360) ? 0 : rotation - 90
-      }
-    })
-  }
+    const { robot } = this.state;
+    if (robot) {
+      const { rotation } = robot;
+      this.setState({
+        robot: {
+          ...this.state.robot,
+          rotation: rotation - 90 === -360 ? 0 : rotation - 90
+        }
+      });
+    }
+  };
 
   handleRightClick = () => {
-    const { rotation } = this.state.robot
-    this.setState({ 
-      robot: {
-        ...this.state.robot,
-        rotation: (rotation + 90 === 360) ? 0 : rotation + 90
-      }
-    })
-  }
-  
+    const { robot } = this.state;
+    if (robot) {
+      const { rotation } = robot;
+      this.setState({
+        robot: {
+          ...this.state.robot,
+          rotation: rotation + 90 === 360 ? 0 : rotation + 90
+        }
+      });
+    }
+  };
+
   render() {
-    const { gridX, gridY, robot } = this.state
+    const { gridX, gridY, robot } = this.state;
     return (
       <div className="app">
-        <header className="app-header">
-          Toy Robot Simulator
-        </header>
-        <div className='app-body'>
+        <header className="app-header">Toy Robot Simulator</header>
+        <div className="app-body">
           <Grid height={gridY} width={gridX}>
             {robot && (
               <Robot
@@ -113,8 +119,8 @@ class App extends PureComponent {
           >
             <PlaceForm
               handleSubmit={this.handlePlace}
-              maxX={gridX-1}
-              maxY={gridY-1}
+              maxX={gridX - 1}
+              maxY={gridY - 1}
               visible={this.state.placeFormVisible}
             />
           </Controls>
