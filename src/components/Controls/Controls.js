@@ -1,6 +1,5 @@
 import React, { PureComponent } from 'react'
 import PropTypes from 'prop-types'
-import logo from './logo.svg';
 import leftArrow from './turn-left-arrow.svg'
 import rightArrow from './turn-right-arrow.svg'
 import upArrow from './arrow-up.svg'
