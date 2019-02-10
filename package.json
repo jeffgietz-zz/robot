@@ -3,11 +3,13 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "fork-ts-checker-webpack-plugin": "^0.5.2",
     "formik": "^1.4.3",
     "lodash": "^4.17.11",
     "prop-types": "^15.6.2",
     "react": "^16.8.1",
-    "react-dom": "^16.8.1"
+    "react-dom": "^16.8.1",
+    "typescript": "^3.3.3"
   },
   "devDependencies": {
     "react-scripts": "2.1.3"
