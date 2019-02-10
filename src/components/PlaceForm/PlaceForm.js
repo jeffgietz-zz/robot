@@ -1,5 +1,5 @@
 import React, { PureComponent } from 'react'
-// import PropTypes from 'prop-types'
+import PropTypes from 'prop-types'
 import { Field, Formik } from 'formik'
 
 class PlaceForm extends PureComponent {
@@ -7,24 +7,26 @@ class PlaceForm extends PureComponent {
   render () {
     return (
       <Formik
-        initialValues={{ posX: '', posY: '' }}
+        initialValues={{ posX: '', posY: '', rotation: '0' }}
         onSubmit={(values) => {
           this.props.handleSubmit(values)
         }}
         validate={values => {
-          console.log('values', values)
           let errors = {};
-          if (values.posX !== 0 && !values.posX) {
-            errors.posX = 'Required';
-          } else if (
-            !/^[0-9]+$/.test(values.posX)
-          ) {
+          const { posX, posY } = values
+          if (posX !== 0 && !posX) {
+          errors.posX = 'Required';
+          } else if (!/^[0-9]+$/.test(posX)) {
             errors.posX = 'Please only use numbers';
+          } else if (
+            posX > this.props.maxX
+          ) {
+            errors.posX = 'Placement outside bounds of grid'
           }
-          if (values.posY !== 0 && !values.posY) {
+          if (posY !== 0 && !posY) {
             errors.posY = 'Required';
           } else if (
-            !/^[0-9]+$/.test(values.posY)
+            !/^[0-9]+$/.test(posY)
           ) {
             errors.posY = 'Please only use numbers';
           }
@@ -57,15 +59,15 @@ class PlaceForm extends PureComponent {
                 )}
               />
               <Field
-                name='direction'
+                name='rotation'
                 render={({ field }) => (
                   <div className='field'>
-                    <label htmlFor='direction'>Direction:</label>    
-                    <select {...field}>
-                      <option value='north'>North</option>                      
-                      <option value="east">East</option>
-                      <option value="south">South</option>
-                      <option value="west">West</option>
+                    <label htmlFor='rotation'>Direction:</label>    
+                    <select name='rotation' {...field}>
+                      <option value='0'>North</option>                      
+                      <option value="90">East</option>
+                      <option value="180">South</option>
+                      <option value="270">West</option>
                     </select>
                   </div>
                 )}
@@ -78,6 +80,10 @@ class PlaceForm extends PureComponent {
         </Formik>
     )
   }
+}
+
+PlaceForm.propTypes = {
+  handleSubmit: PropTypes.func
 }
 
 export default PlaceForm

@@ -1,29 +1,35 @@
-import React, { PureComponent } from 'react'
+import React, { Component } from 'react'
 import PropTypes from 'prop-types'
-import { times } from 'lodash'
+import { reverse, times } from 'lodash'
 
 // We input Robot to check against it
 import Robot from '../Robot'
 import './Grid.css'
 
-class Grid extends PureComponent {
+class Grid extends Component {
+  // shouldComponentUpdate(nextProps, nextState) {
+
+  // }
+  getRobots = (children) => {
+    return React.Children.count(children) > 0 
+    ? (React.Children.map(children, child => {
+      if(React.isValidElement(child) && child.type === Robot) {
+        return child
+      }
+      }))
+    : []
+  }
   render() {
     const { children, height, width } = this.props
     // First check for children, then make sure they are robots
-    const robots = React.Children.count(children) > 0 
-      ? (React.Children.map(children, child => {
-        if(React.isValidElement(child) && child.type === Robot) {
-          return child
-        }
-        }))
-      : []
+    const robots = this.getRobots(children)
 
     return (
       <div className='grid-wrap'>
         <div className='grid'>
           {times(width, colCount => (
             <div className='grid-col' key={`grid-col-${colCount}`}>
-              {times(height, cellCount => (
+              {reverse(times(height, cellCount => (
                 <div className='grid-cell' key={`grid-cell-${cellCount}`}>
                   {robots.map((robot, robotCount) => {
                     // Check if there is a robot in the current row/cell
@@ -33,7 +39,7 @@ class Grid extends PureComponent {
                     }
                   })}
                 </div>
-              ))}
+              )))}
             </div>
           ))}
         </div>
