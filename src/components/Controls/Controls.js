@@ -4,6 +4,7 @@ import logo from './logo.svg';
 import leftArrow from './turn-left-arrow.svg'
 import rightArrow from './turn-right-arrow.svg'
 import upArrow from './arrow-up.svg'
+import place from './placeholder-on-map-paper-in-perspective.svg'
 
 import './Controls.css'
 
@@ -16,7 +17,7 @@ class Controls extends PureComponent {
         </div>
         <div className="button-list">
           <div className="button button-place" onClick={this.props.handlePlaceToggle}>
-            <img src={logo} alt='place' />
+            <img src={place} alt='place' />
             Place
           </div>
           <div className="button button-left" onClick={this.props.handleLeftClick}>

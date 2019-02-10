@@ -10,6 +10,7 @@
   margin-bottom: 0.4em;
   padding-bottom: 1.1em;
   position: relative;
+  width: 100%;
 }
 
 label {
@@ -21,9 +22,11 @@ input {
   border-radius: 2px;
   border-width: 1px;
   border: 1px solid #ccc;
-  display: block;
+  display: inline-block;
   font-size: 1em;
-  padding: 0.5em;
+  padding: 0.5em 0;
+  width: 100%;
+  text-indent: 0.5em;
 }
 
 select {
