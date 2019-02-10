@@ -7,9 +7,6 @@ import Robot from '../Robot'
 import './Grid.css'
 
 class Grid extends Component {
-  // shouldComponentUpdate(nextProps, nextState) {
-
-  // }
   getRobots = (children) => {
     return React.Children.count(children) > 0 
     ? (React.Children.map(children, child => {

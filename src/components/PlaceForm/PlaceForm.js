@@ -2,8 +2,9 @@ import React, { PureComponent } from 'react'
 import PropTypes from 'prop-types'
 import { Field, Formik } from 'formik'
 
+import './PlaceForm.css'
+
 class PlaceForm extends PureComponent {
-  
   render () {
     return (
       <Formik
@@ -39,7 +40,10 @@ class PlaceForm extends PureComponent {
             touched,
             handleSubmit,
           }) => (
-            <form onSubmit={handleSubmit}>
+            <form
+              className={`placeform ${this.props.visible ? 'visible' : 'hidden'}`}
+              onSubmit={handleSubmit}
+            >
               <Field
                 name='posX'
                 render={({ field }) => (
@@ -82,8 +86,13 @@ class PlaceForm extends PureComponent {
   }
 }
 
+PlaceForm.defaultProps = {
+  visible: true
+}
+
 PlaceForm.propTypes = {
-  handleSubmit: PropTypes.func
+  handleSubmit: PropTypes.func,
+  visible: PropTypes.bool
 }
 
 export default PlaceForm

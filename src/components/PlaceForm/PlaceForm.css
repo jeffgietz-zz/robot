@@ -1,0 +1,13 @@
+.placeform {
+  
+}
+
+.placeform.hidden {
+  display: none;
+}
+
+@media only screen and (min-width: 31rem) {
+  .placeform.hidden {
+    display: block;
+  }
+}

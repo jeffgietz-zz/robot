@@ -111,7 +111,12 @@ class App extends PureComponent {
             handlePlaceToggle={this.handlePlaceToggle}
             handleRightClick={this.handleRightClick}
           >
-            <PlaceForm handleSubmit={this.handlePlace} maxX={gridX-1} maxY={gridY-1} />
+            <PlaceForm
+              handleSubmit={this.handlePlace}
+              maxX={gridX-1}
+              maxY={gridY-1}
+              visible={this.state.placeFormVisible}
+            />
           </Controls>
         </div>
       </div>
