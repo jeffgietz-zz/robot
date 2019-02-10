@@ -16,9 +16,9 @@ class Robot extends PureComponent {
 }
 
 Robot.propTypes = {
-  rotation: PropTypes.number.isRequired,
-  posX: PropTypes.number.isRequired,
-  posY: PropTypes.number.isRequired,
+  rotation: PropTypes.number,
+  posX: PropTypes.number,
+  posY: PropTypes.number,
 }
 
 export default Robot
