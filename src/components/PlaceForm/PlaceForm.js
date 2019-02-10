@@ -35,9 +35,7 @@ class PlaceForm extends PureComponent {
         }}
       >
           {({
-            values,
             errors,
-            touched,
             handleSubmit,
           }) => (
             <form
@@ -49,7 +47,8 @@ class PlaceForm extends PureComponent {
                 render={({ field }) => (
                   <div className='field'>
                     <label htmlFor='posX'>Place Robot X:</label>    
-                    <input {...field} placeholder='0' />
+                    <input {...field} placeholder='Position X' />
+                    {errors.posX && <div className="error">{errors.posX}</div>}
                   </div>
                 )}
               />
@@ -57,8 +56,9 @@ class PlaceForm extends PureComponent {
                 name='posY'
                 render={({ field }) => (
                   <div className='field'>
-                    <label htmlFor='posY'>Place Robot Y:</label>    
-                    <input {...field} placeholder='0' />
+                    <label htmlFor='posY'>Place Robot Y:</label>
+                    <input {...field} placeholder='Position Y' />
+                    {errors.posY && <div className="error">{errors.posY}</div>}
                   </div>
                 )}
               />

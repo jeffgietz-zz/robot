@@ -1,9 +1,73 @@
 .placeform {
-  
+  padding: 1em;
 }
 
 .placeform.hidden {
   display: none;
+}
+
+.field {
+  margin-bottom: 0.4em;
+  padding-bottom: 1.1em;
+  position: relative;
+}
+
+label {
+  display: block;
+  margin-bottom: 0.5em;
+}
+
+input {
+  border-radius: 2px;
+  border-width: 1px;
+  border: 1px solid #ccc;
+  display: block;
+  font-size: 1em;
+  padding: 0.5em;
+}
+
+select {
+  -webkit-appearance:none;
+  appearance:none;
+  -moz-appearance:none;
+  border-radius: 2px;
+  border: 1px solid #ccc;
+  display: block;
+  font-size: 0.8em;
+  padding: 0.8em;
+  width: 100%;
+  background-image: linear-gradient(45deg, transparent 50%, gray 50%), linear-gradient(135deg, gray 50%, transparent 50%), linear-gradient(to right, #ccc, #ccc);
+  background-position: calc(100% - 20px) calc(1em + 2px), calc(100% - 15px) calc(1em + 2px), calc(100% - 2.75em) 0.55em;
+  background-size: 5px 5px, 5px 5px, 1px 1.75em;
+  background-repeat: no-repeat;
+}
+
+.error {
+  color: #e04343;
+  font-size: 0.9em;
+  bottom: 0;
+  position: absolute;
+}
+
+button {
+  background-color: #5EDBF7;
+  border: none;
+  border-radius: 2px;
+  cursor: pointer;
+  display: block;
+  border-radius: 2px;
+  font-size: 0.8em;
+  padding: 1em 0.5em;
+  width: 100%;
+  transition: opacity 0.2 ease-in-out;
+  opacity: 1;
+}
+
+button:hover {
+  opacity: 0.9;
+}
+button:active {
+  opacity: 1;
 }
 
 @media only screen and (min-width: 31rem) {

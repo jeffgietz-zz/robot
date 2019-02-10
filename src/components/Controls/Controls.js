@@ -1,6 +1,9 @@
 import React, { PureComponent } from 'react'
 import PropTypes from 'prop-types'
 import logo from './logo.svg';
+import leftArrow from './turn-left-arrow.svg'
+import rightArrow from './turn-right-arrow.svg'
+import upArrow from './arrow-up.svg'
 
 import './Controls.css'
 
@@ -12,21 +15,21 @@ class Controls extends PureComponent {
           {this.props.children}
         </div>
         <div className="button-list">
-          <div className="button" onClick={this.props.handlePlaceToggle}>
+          <div className="button button-place" onClick={this.props.handlePlaceToggle}>
             <img src={logo} alt='place' />
             Place
           </div>
-          <div className="button" onClick={this.props.handleLeftClick}>
-            <img src={logo} alt='place' />
+          <div className="button button-left" onClick={this.props.handleLeftClick}>
+            <img src={leftArrow} alt='turn left' />
             Left
           </div>
-          <div className="button" onClick={this.props.handleRightClick}>
-            <img src={logo} alt='place' />
-            Right
-          </div>
-          <div className="button" onClick={this.props.handleAdvance}>
-            <img src={logo} alt='place' />
+          <div className="button button-up" onClick={this.props.handleAdvance}>
+            <img src={upArrow} alt='place' />
             Advance
+          </div>
+          <div className="button button-right" onClick={this.props.handleRightClick}>
+            <img src={rightArrow} alt='turn right' />
+            Right
           </div>
         </div>
       </div>

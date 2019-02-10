@@ -2,7 +2,7 @@
   max-width: 50em;
   position: relative;
   flex-grow: 1;
-  box-shadow: 0px 2px 7px 0px rgba(204,204,204,1);
+  box-shadow: 0px 2px 7px 0px rgba(0,0,0,1);
 }
 .grid {
   display: grid;
@@ -13,7 +13,7 @@
 
 .grid-col:nth-child(odd) .grid-cell:nth-child(odd),
 .grid-col:nth-child(even) .grid-cell:nth-child(even) {
-  background-color: rgb(212, 161, 233);
+  background-color: rgb(122, 85, 132);
 }
 
 .grid-cell {
